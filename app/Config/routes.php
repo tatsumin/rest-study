@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Routes configuration
  *
  * In this file, you set up routes to your controllers and their actions.
@@ -36,16 +36,47 @@
  */
 	CakePlugin::routes();
 
-
-
 /*
  * API
  */
+
+// ログイン
+Router::connect('/users/login', array (
+	'controller' => 'users',
+	'action' => 'login',
+	'method' => array (
+		'POST'
+	)
+));
+
+// ログアウト
+Router::connect('/users/logout', array (
+	'controller' => 'users',
+	'action' => 'logout',
+	'method' => 'POST'
+));
+
+// ログインチェック(ログイン情報取得)
+Router::connect('/users/loggedin', array (
+	'controller' => 'users',
+	'action' => 'loggedIn',
+	'method' => 'GET'
+));
+
+// サインアップ
+Router::connect('/users/signup', array (
+	'controller' => 'users',
+	'action' => 'signUp',
+	'method' => array (
+		'POST'
+	)
+));
+
+
 Router::mapResources(array (
-   'todo_lists',
+	'todo_lists',
 ));
 Router::parseExtensions('json');
-
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
